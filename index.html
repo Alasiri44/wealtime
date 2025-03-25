@@ -13,22 +13,39 @@
         <p>Get real-time weather updates for any city around the world</p>
     </header>
 
-    <form id="my-form">
-        <input type="text" placeholder="Enter city" id="city">        
-        <button type="submit"><i class="fas fa-search"></i></button>
+    <div class="myWeather">
+        <div id="currentWeather" class="weatherFound">
+            <h1 id="currentCity" ></h1>
+            <p  class="weather-details"></p>
+            <img src="" alt="" id="current-city-weather-image" class="weather-details">
+            <p id="current-city-description" class="weather-details">My description</p>
+            <p class="weather-headers">Humidity: <span id="current-city-humidity" class="weather-details"></span> %</p>
+            <p class="weather-headers">Temperature: <span id="current-city-temperature" class="weather-details"></span>  °C</p>        
+                   
+            <p id="error" class="weather-details">Please enter the city </p>
+        </div>
+    
+        <div id="weatherForCitySearched">
+            <form id="my-form">
+                <input type="text" placeholder="Enter city" id="city">        
+                <button type="submit"><i class="fas fa-search"></i></button>
+                
+            </form>
         
-    </form>
-
-    <div id="weatherFound">
-        <h1 id="displayedCity" ></h1>
-        <p id="weather" class="weather-details"></p>
-        <img src="" alt="" id="weather-image" class="weather-details">
-        <p id="temperature" class="weather-details"></p>
-        <p id="humidity" class="weather-details"></p>
-        <p id="description" class="weather-details">My description</p>
-        <p id="error" class="weather-details">Please enter the city </p>
+            <div class="weatherFound">
+                <h1 id="displayedCity" ></h1>
+                <p id="weather" class="weather-details"></p>
+                <img src="" alt="" id="weather-image" class="weather-details">
+                <p id="description" class="weather-details">My description</p>
+                <p class="weather-headers">Humidity: <span id="current-humidity" class="weather-details"></span> %</p>
+                <p class="weather-headers">Temperature: <span id="current-temperature" class="weather-details"></span>  °C</p>        
+                       
+                <p id="error" class="weather-details">Please enter the city </p>
+            </div>
+        </div>
     </div>
-
-    <script src="./src/script.js"></script>
+    
+    
+    <script type="module" src="./src/script.js"></script>
 </body>
 </html>

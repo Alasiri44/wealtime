@@ -7,8 +7,9 @@ header{
 
 body{
     background: url('https://images.unsplash.com/photo-1525490829609-d166ddb58678?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3VufGVufDB8fDB8fHww');
-    background-repeat: space;
+    background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     align-items: center;
     text-align: center;
 }
@@ -31,7 +32,7 @@ input#city:active{
     border-radius: 10px;
 }
 
-div#weatherFound{
+div.weatherFound{
     margin: 0 auto;
     background: linear-gradient(180deg, rgb(61, 61, 250), orange);
     text-align: center;
@@ -47,3 +48,11 @@ h1{
     display: none;
 }
 
+.weather-details{
+    font-weight: bold;
+    
+}
+
+.myWeather{
+    display: flex;
+}
