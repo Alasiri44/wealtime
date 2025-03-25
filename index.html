@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealtime</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://kit.fontawesome.com/f18768191b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="myHeader">
+        <h1>🌤️ Wealtime</h1>
+        <p>Get real-time weather updates for any city around the world</p>
+    </header>
+
+    <form id="my-form">
+        <input type="text" placeholder="Enter city" id="city">        
+        <button type="submit"><i class="fas fa-search"></i></button>
+        
+    </form>
+
+    <div id="weatherFound">
+        <h1 id="displayedCity" ></h1>
+        <p id="weather" class="weather-details"></p>
+        <img src="" alt="" id="weather-image" class="weather-details">
+        <p id="temperature" class="weather-details"></p>
+        <p id="humidity" class="weather-details"></p>
+        <p id="description" class="weather-details">My description</p>
+        <p id="error" class="weather-details">Please enter the city </p>
+    </div>
+
+    <script src="./src/script.js"></script>
+</body>
+</html>

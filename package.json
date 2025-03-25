@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cities-list": "^1.0.3",
+    "dotenv": "^16.4.7"
+  }
+}
