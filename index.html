@@ -51,22 +51,27 @@
             </div>
         </div>
 
-        <div id="weather-forecast" class="weatherFound">
-            <div class="current-weather-header">
-                <h2 >5 Day Weather Forecast</h2>
-            </div>
-        </div>
-
-
         <div id="myTime" class="weatherFound">        
             
-                <div class="current-weather-header">
-                    <h2 >Current Time</h2>
-                </div>
-                    <h2>The Current time: <span id="clock"></span> </h2>
-            
+            <div class="current-weather-header">
+                <h2 >Current Time</h2>
+            </div>
+                <h2>The Current time: <span class="current" id="clock"></span> </h2>
+                <h2>The Current date: <span class="current" id="date"></span> </h2>
+        
+    </div>
+
+        <div id="current-city-weather-forecast" class="weatherFound">
+            <div class="current-weather-header">
+                <h2 id="current-city-search-forecast" >5 Day Weather Forecast</h2>
+            </div>
         </div>
-    
+   
+        <div id="search-weather-forecast" class="weatherFound">
+            <div class="current-weather-header">
+                <h2 id="search-city-weather-forecast">5 Day Weather Forecast</h2>
+            </div>
+        </div>
     
     <script type="module" src="./src/script.js"></script>
 </body>

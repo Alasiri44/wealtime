@@ -87,8 +87,8 @@ form{
     margin: 0;
 }
 
-span#clock{
-    font-size: 84.8px;
+span.current{
+    font-size: 97px;
 }
 
 div#currentWeather{
@@ -96,6 +96,7 @@ div#currentWeather{
 }
 
 div#myTime{
-    height: 200px;
+    
+    padding-bottom: 10px;
 }
 

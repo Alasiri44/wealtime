@@ -16,14 +16,17 @@ const errorMessage = document.getElementById('error');
 const temperature = document.getElementById('current-temperature');
 const humidity = document.getElementById('current-humidity');
 
+
 function displayWeather(city='Paris'){ 
     const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${openWeather_apiKey}` ;
     fetch(weatherApiUrl)
     .then(res => res.json())
     .then(data => {
                 
+        let searchCityWeatherForecast = document.getElementById('search-city-weather-forecast');     
         data.weather.forEach(element => {
-                        
+            
+            searchCityWeatherForecast.textContent = `${city} 5 Day Weather Forecast`;
             displayedCity.textContent = city;
             weatherName.textContent = element.main;
 
@@ -57,15 +60,14 @@ function allowingSearching(){
 let currentCityPrediction_weatherApiUrl;
 
 function currentCity(){
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    navigator.geolocation.watchPosition(successCallback, errorCallback);
     
     function successCallback(position){
-        console.log('I am here');
+        
         // Getting the longitude and latitude
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;     
-        console.log(position);
-        
+                
         const currentCity_WeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeather_apiKey}`
         
         fetch(currentCity_WeatherApiUrl)
@@ -77,7 +79,9 @@ function currentCity(){
             let currentCityDescription = document.getElementById('current-city-description');
             let currentCityTemperature = document.getElementById('current-city-temperature')
             let currentCityHumidity = document.getElementById('current-city-humidity');
+            let currentCityWeatherForecast = document.getElementById('current-city-search-forecast');
 
+            currentCityWeatherForecast.textContent = `${data.name} 5 Day Weather Forecast`;
             currentCity.textContent = data.name;  
             for(let element of data.weather){
                     
@@ -103,7 +107,11 @@ function currentCity(){
 function updateClock() {
     const now = new Date();
     document.getElementById("clock").textContent = now.toLocaleTimeString();
-}
+    const date = document.getElementById('date');    
+    const [formattedDate, formattedTime] = now.toLocaleString().split(',');
+    date.textContent = formattedDate; 
+        
+} 
 setInterval(updateClock, 1000);
 
 
