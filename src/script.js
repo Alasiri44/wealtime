@@ -12,19 +12,18 @@ const weatherDescription = document.getElementById('description');
 const weatherName = document.getElementById('weather');
 const weatherIcon = document.getElementById('icon');
 const imageCreated = document.getElementById('weather-image');
-const error = document.getElementById('error');
+const errorMessage = document.getElementById('error');
 const temperature = document.getElementById('current-temperature');
 const humidity = document.getElementById('current-humidity');
 
-function displayWeather(city='Nairobi'){   
-    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${openWeather_apiKey}`  
+function displayWeather(city='Paris'){ 
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${openWeather_apiKey}` ;
     fetch(weatherApiUrl)
     .then(res => res.json())
     .then(data => {
-        console.log(data.main);
+                
         data.weather.forEach(element => {
-            console.log(element);
-            
+                        
             displayedCity.textContent = city;
             weatherName.textContent = element.main;
 
@@ -55,24 +54,65 @@ function allowingSearching(){
         displayWeather(currentCity);
     })
 }
+let currentCityPrediction_weatherApiUrl;
 
 function currentCity(){
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    
     function successCallback(position){
-        console.log(position);        
+        console.log('I am here');
+        // Getting the longitude and latitude
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;     
+        console.log(position);
+        
+        const currentCity_WeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeather_apiKey}`
+        
+        fetch(currentCity_WeatherApiUrl)
+        .then(res => res.json())
+        .then(data => {
+            let currentCity = document.getElementById('currentCity');
+            let currentCityWeatherImage = document.getElementById('current-city-weather-image');
+            let currentWeather = document.getElementById('current-city-weather');
+            let currentCityDescription = document.getElementById('current-city-description');
+            let currentCityTemperature = document.getElementById('current-city-temperature')
+            let currentCityHumidity = document.getElementById('current-city-humidity');
+
+            currentCity.textContent = data.name;  
+            for(let element of data.weather){
+                    
+                currentWeather.textContent = element.main;
+    
+                currentCityWeatherImage.src = `https://openweathermap.org/img/wn/${element.icon}@2x.png`;
+                            
+                currentCityDescription.textContent = element.description; 
+                
+            }
+                           
+                    currentCityTemperature.textContent = parseFloat((data.main.temp - 273.15).toFixed(2));
+                    currentCityHumidity.textContent = data.main.humidity;
+        }        
+        )        
     }
     function errorCallback(position){
         console.log(position);        
-    }
-
-    const watchId =navigator.geolocation.watchPosition(successCallback, errorCallback);
-    console.log(watchId);
+    }    
+    
 }   
+
+function updateClock() {
+    const now = new Date();
+    document.getElementById("clock").textContent = now.toLocaleTimeString();
+}
+setInterval(updateClock, 1000);
+
 
 
 function main(){
     displayWeather();
     allowingSearching();
-   // currentCity();
+    currentCity();
+    updateClock(); 
 }
 
 document.addEventListener('DOMContentLoaded', function(){

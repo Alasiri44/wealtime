@@ -13,26 +13,33 @@
         <p>Get real-time weather updates for any city around the world</p>
     </header>
 
-    <div class="myWeather">
+    <div class="myWeather">        
         <div id="currentWeather" class="weatherFound">
+            <div class="current-weather-header">
+                <h2 >Weather using Location</h2>
+            </div>
+
             <h1 id="currentCity" ></h1>
-            <p  class="weather-details"></p>
-            <img src="" alt="" id="current-city-weather-image" class="weather-details">
+            <p id="current-city-weather" class="weather-details"></p>
+            <img src="" alt="" id="current-city-weather-image" class="weather-details" style="text-align: center;">
             <p id="current-city-description" class="weather-details">My description</p>
             <p class="weather-headers">Humidity: <span id="current-city-humidity" class="weather-details"></span> %</p>
             <p class="weather-headers">Temperature: <span id="current-city-temperature" class="weather-details"></span>  °C</p>        
-                   
-            <p id="error" class="weather-details">Please enter the city </p>
+                
         </div>
     
-        <div id="weatherForCitySearched">
-            <form id="my-form">
-                <input type="text" placeholder="Enter city" id="city">        
-                <button type="submit"><i class="fas fa-search"></i></button>
-                
-            </form>
-        
-            <div class="weatherFound">
+        <div id="weatherForCitySearched" class="weatherFound">
+            <div class="current-weather-header">
+                <h2 id="form-search-header">Search for weather</h2>
+                <form id="my-form">
+                    <input type="text" placeholder="Enter city" id="city">        
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                    
+                </form>
+            </div>
+
+                    
+            <div >
                 <h1 id="displayedCity" ></h1>
                 <p id="weather" class="weather-details"></p>
                 <img src="" alt="" id="weather-image" class="weather-details">
@@ -43,7 +50,22 @@
                 <p id="error" class="weather-details">Please enter the city </p>
             </div>
         </div>
-    </div>
+
+        <div id="weather-forecast" class="weatherFound">
+            <div class="current-weather-header">
+                <h2 >5 Day Weather Forecast</h2>
+            </div>
+        </div>
+
+
+        <div id="myTime" class="weatherFound">        
+            
+                <div class="current-weather-header">
+                    <h2 >Current Time</h2>
+                </div>
+                    <h2>The Current time: <span id="clock"></span> </h2>
+            
+        </div>
     
     
     <script type="module" src="./src/script.js"></script>
