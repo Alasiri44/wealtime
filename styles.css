@@ -33,10 +33,14 @@ input#city:active{
     border-radius: 10px;
 }
 
-
-
 .hidden{
     display: none;
+    font-size: 20px;
+    color: white;
+
+    background-color: red;
+    width: 500px;
+    height: 100px;
 }
 
 .weather-details{
@@ -88,7 +92,7 @@ form{
 }
 
 span.current{
-    font-size: 97px;
+    font-size: 88px;
 }
 
 div#currentWeather{

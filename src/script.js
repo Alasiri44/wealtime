@@ -60,7 +60,7 @@ function allowingSearching(){
 let currentCityPrediction_weatherApiUrl;
 
 function currentCity(){
-    navigator.geolocation.watchPosition(successCallback, errorCallback);
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     
     function successCallback(position){
         
@@ -69,10 +69,13 @@ function currentCity(){
         const lon = position.coords.longitude;     
                 
         const currentCity_WeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeather_apiKey}`
-        
+        let newErrorMessage = document.getElementById('current-city-error');
+
         fetch(currentCity_WeatherApiUrl)
         .then(res => res.json())
         .then(data => {
+
+            errorMessage.classList.add('hidden');
             let currentCity = document.getElementById('currentCity');
             let currentCityWeatherImage = document.getElementById('current-city-weather-image');
             let currentWeather = document.getElementById('current-city-weather');
@@ -96,10 +99,28 @@ function currentCity(){
                     currentCityTemperature.textContent = parseFloat((data.main.temp - 273.15).toFixed(2));
                     currentCityHumidity.textContent = data.main.humidity;
         }        
-        )        
+        ).catch(err => { 
+            let weatherDetails = document.getElementById('current-city-weather-details');
+            weatherDetails.classList.add('hidden');
+            newErrorMessage.textContent = error.message;
+            console.log('Could not display content');
+            
+        })       
     }
     function errorCallback(position){
-        console.log(position);        
+        console.log(position);  
+
+        let newErrorMessage = document.getElementById('current-city-error');
+        let weatherDetails = document.getElementById('current-city-weather-details');
+        weatherDetails.classList.add('hidden');
+        
+        newErrorMessage.textContent = position.message;
+        newErrorMessage.style.backgroundColor = 'red';
+        newErrorMessage.style.borderRadius = '5px'
+        newErrorMessage.style.height = '50px'
+        newErrorMessage.style.textAlign = 'centre';
+        newErrorMessage.style.padding = '10px 30px'
+        console.log('Could not display content');      
     }    
     
 }   
