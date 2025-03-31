@@ -77,8 +77,7 @@ p.weather-headers{
 .current-weather-header{
     background-color: green;
     width: 500px;
-    height: 80px;  
-    
+    height: 80px;      
     }
 
 h2#form-search-header{
@@ -92,7 +91,7 @@ form{
 }
 
 span.current{
-    font-size: 88px;
+    font-size: 80px;
 }
 
 div#currentWeather{
@@ -102,5 +101,13 @@ div#currentWeather{
 div#myTime{
     
     padding-bottom: 10px;
+    
 }
 
+div.newlyCreatedDivs{
+    background: url('https://i.pinimg.com/236x/55/dd/eb/55ddebad50b46227096f859ac67d4abe.jpg');
+    width: 100px;
+    height: 150px;
+    float: left;
+    margin: 5px;
+}
